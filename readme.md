@@ -3,3 +3,4 @@
 - ```cd lit-app```
 - ```npm install```
 - ```npm run dev```
+- ```localhost:8080```
