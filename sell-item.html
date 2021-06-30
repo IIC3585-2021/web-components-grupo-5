@@ -22,7 +22,7 @@
   <label>Ruta de imagen:</label><br>
   <input type="text" id="fimage"><br>
   <input type="submit" value="Submit" onclick="createProduct()"><br>
-  <sell-item title="Mi producto 1" rating="3" discount="0" offer="200" price="200" image="img/1.jpg" visible></sell-item><br>
+  <sell-item title="Manzana" rating="5" discount="0" offer="200" price="200" image="img/manzana.png" visible></sell-item><br>
 
 
 </body>
@@ -41,7 +41,7 @@
         }
       })
       if (!approved){
-        alert("missing fields :(")
+        alert("missing fields :( complete them and then submit")
         return
       }
       
@@ -69,7 +69,7 @@
       newProduct.setAttribute("price", newPrice)
       newProduct.setAttribute("image", newImage)
 
-      //append
+      // append
       document.body.appendChild(newProduct);
     }
     

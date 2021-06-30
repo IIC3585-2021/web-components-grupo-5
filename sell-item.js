@@ -20,9 +20,7 @@ class SellItem extends HTMLElement {
   }
 
   static get observedAttributes () {
-    return ["image", "price", "offer", "discount", "title", "rating", 
-    //"visible"
-  ];
+    return ["image", "price", "offer", "discount", "title", "rating"];
   }
 
   attributeChangedCallback(name, oldValue, newValue) {
