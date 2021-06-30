@@ -1,4 +1,5 @@
 # LitElement tutorial starter
-- ```cd lit app```
+- clone repository
+- ```cd lit-app```
 - ```npm install```
 - ```npm run dev```
