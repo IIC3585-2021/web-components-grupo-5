@@ -7,22 +7,56 @@
   , initial-scale=1.0">
   <title>Document</title>
   <script src="sell-item.js"></script>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: row;
+    }
+    .cards-container {
+      padding: 10px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: azure;
+      margin: 20px auto;
+      justify-content: space-evenly;
+      overflow: scroll;
+      width: 25%;
+      height: 566px;
+    }
+    .add-card-container {
+      padding: 40px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: antiquewhite;
+      margin: 20px auto;
+      width: 25%;
+      height: 500px;
+    }
+  </style>
 </head>
 <body>
-  <label>Titulo del producto:</label><br>
-  <input type="text" id="ftitle" ><br>
-  <label>Rating del producto:</label><br>
-  <input type="text" id="frating" ><br>
-  <label>Descuento del producto:</label><br>
-  <input type="text" id="fdiscount" ><br>
-  <label>Oferta del producto:</label><br>
-  <input type="text" id="foffer" ><br>
-  <label>Precio del producto:</label><br>
-  <input type="text" id="fprice" ><br>
-  <label>Ruta de imagen:</label><br>
-  <input type="text" id="fimage"><br>
-  <input type="submit" value="Submit" onclick="createProduct()"><br>
-  <sell-item title="Manzana" rating="5" discount="0" offer="200" price="200" image="img/manzana.png" visible></sell-item><br>
+  <div class="container">
+    <div class="add-card-container">
+      <label>Titulo del producto:</label><br>
+      <input type="text" id="ftitle" ><br>
+      <label>Rating del producto:</label><br>
+      <input type="text" id="frating" ><br>
+      <label>Descuento del producto:</label><br>
+      <input type="text" id="fdiscount" ><br>
+      <label>Oferta del producto:</label><br>
+      <input type="text" id="foffer" ><br>
+      <label>Precio del producto:</label><br>
+      <input type="text" id="fprice" ><br>
+      <label>Ruta de imagen:</label><br>
+      <input type="text" id="fimage"><br>
+      <input type="submit" value="Submit" onclick="createProduct()"><br>
+    </div>
+    <div class="cards-container" id="cards-container">
+      <sell-item title="Manzana" rating="5" discount="0" offer="200" price="200" image="img/manzana.png" visible></sell-item>
+      <sell-item title="Leche" rating="4" discount="20" offer="960" price="1200" image="img/leche.png" visible></sell-item>
+      <sell-item title="Perfume" rating="3" discount="50" offer="11.000" price="22.000" image="img/colonia.png" visible></sell-item>
+    </div>
+  </div>
 </body>
 
   <script>
@@ -68,7 +102,8 @@
       newProduct.setAttribute("image", newImage)
 
       // append
-      document.body.appendChild(newProduct);
+      var cardsContainer = document.getElementById('cards-container')
+      cardsContainer.appendChild(newProduct);
     }
     
   </script>

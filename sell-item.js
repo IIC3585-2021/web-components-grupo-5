@@ -3,10 +3,12 @@ template.innerHTML = /*html*/`
 <style>
   .sell-item {
     padding: 24px 0px; 
+    margin: 10px auto;
   }
   .card {
     display: flex;
-    max-width: 28rem;
+    width: 350px;
+    height: 120px;
     background-color: white;
     --tw-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
     box-shadow: var(--tw-ring-offset-shadow, 0 0 #0000), var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
@@ -27,6 +29,29 @@ template.innerHTML = /*html*/`
     font-weight: 700;
     font-size: 1.5rem;
     line-height: 2rem;
+  }
+  .title-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .discount-container {
+    color: red;
+    font-size: 2rem;
+    line-height: 2rem;
+  }
+  .price-container {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+  }
+  .price {
+    text-decoration: line-through;
+  }
+  .offer {
+    font-weight: 700;
+    margin-left: 4px;
   }
   .rating-stars {
     align-items: center;
@@ -50,18 +75,16 @@ template.innerHTML = /*html*/`
     <div class="card">
       <img class='image' src="">
       <div class='info-container'>
-        <div class='product'>Product: <span class='title'>Title</span></div> 
-        <div>Price: $<span class='price'>Price</span></div> 
-        <div>- <span class='discount'>Discount</span>%</div> 
-        <div>Offer: <span class='offer'>Offer</span></div> 
-        <div class='rating-stars'>
+        <div class="title-container">
+          <div class='product'><span class='title'>Title</span></div> 
+          <div class='discount-container'>- <span class='discount'>Discount</span>%</div> 
+        </div>
+        <div class="price-container">
+          <div class="old-price-container">Price: $<span class='price'>Price</span></div> 
+          <div><span class='offer'>Offer</span></div> 
+        </div>
+        <div class='rating-stars' id='rating-stars'>
           Rating: <span class='rating'>Rating</span> stars
-          <svg class="star-selected" viewBox="0 0 24 24">
-            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
-          </svg>
-          <svg class="star-unselected" viewBox="0 0 24 24">
-            <path d="M12 17.27L18.18 21L16.54 13.97L22 9.24L14.81 8.63L12 2L9.19 8.63L2 9.24L7.46 13.97L5.82 21L12 17.27Z"/>
-          </svg>
         </div> 
       </div>
     </div>
