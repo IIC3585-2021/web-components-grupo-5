@@ -1,41 +1,85 @@
 const template = document.createElement("template")
 template.innerHTML = /*html*/`
 <style>
-    /*span {
-        cursor: pointer;
+    .main-container {
+      padding: 10px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: azure;
+      margin: 20px auto;
+      justify-content: space-evenly;
+      overflow: scroll;
+      width: 25%;
+      height: auto;
     }
-    .list {
-        width: 400px;
+    .title {
+        margin: 0px auto;
+        margin-bottom: 10px;
     }
-    .item, .agregar {
+    .new-item-container {
+        margin-bottom: 10px;
         display: flex;
+        flex-direction: column;
         justify-content: space-between;
+    }
+    .input-container {
+        margin-bottom: 10px;
+        display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+    }
+    .new-item {
+        width: 80%;
+    }
+    .add {
+        width: 15%;
+        background-color: lightblue;
+        border: solid 2px lightblue;
+        border-radius: 0.25rem;
+    }
+    .list-container {
+        width: 100%;
+        --tw-bg-opacity: 1;
+        background-color: rgba(199, 210, 254, var(--tw-bg-opacity));
+        border-radius: 0.25rem;
+        padding: 10px;
         margin-bottom: 10px;
     }
     .item {
-        margin-left: 25px;
-    }
-    .nuevo-item {
-        border: 1px solid #999;
-        border-bottom: 1px solid #444;
-        flex: 1;
-        padding: 5px;
-        margin-left: 7px;
-    }
-    .input {
         display: flex;
+        flex-direction: row;
+        align-items: start;
+        justify-content: space-between;
+    }
+    .delete {
+        width: 16px;
+        height: 16px;
+        margin-left: 10px;
+        background-color: red;
+        border-radius: 9999px;
         align-items: center;
+        justify-items: stretch;
+        display: flex;
+    }
+    .delete-cross {
+        margin-left: 4px;
     }
     .tachado {
         text-decoration: line-through;
-    }*/
+        font-style: italic;
 </style>
-<div class="list">
+<div class="main-container">
     <h3 class="title"></h3>
-    <div class="list-wrapper"></div>
-    <div >
-        <div class="input">Add new item: <input type="text" class="new-item"> </div>
-        <span class="add">add</span>
+    <div class="new-item-container">
+        <div class="input">Add new item:</div>
+        <div class="input-container">
+            <input type="text" class="new-item"/>
+            <button class="add">add</button>
+        </div>
+    </div>
+    <div class="list-container">
+        <div class="list-wrapper"></div>
     </div>
 </div>`
 
@@ -61,7 +105,7 @@ class ToDo extends HTMLElement {
         const newRow = document.createElement("div");
         newRow.className = "item";
         newRow.id = "item" +  i;
-        newRow.innerHTML = value  + '<span class="delete">X</span>' + '<span class="done">Done</span>'
+        newRow.innerHTML = `<span class=value>${value}</span>` + '<div class="delete"><span class="delete-cross">x</span></div>'
         
         wrapper.appendChild(newRow)
 
@@ -72,7 +116,7 @@ class ToDo extends HTMLElement {
             })
 
         // Onclick -> done
-        newRow.querySelector(".done").addEventListener("click", () => {
+        newRow.querySelector(".value").addEventListener("click", () => {
             if (!newRow.className.includes("tachado")){
                 newRow.className += " tachado";
             }else{
