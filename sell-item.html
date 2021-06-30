@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=
+  , initial-scale=1.0">
+  <title>Document</title>
+  <script src="sell-item.js"></script>
+</head>
+<body>
+  <label>Titulo del producto:</label><br>
+  <input type="text" id="ftitle" ><br>
+  <label>Rating del producto:</label><br>
+  <input type="text" id="frating" ><br>
+  <label>Descuento del producto:</label><br>
+  <input type="text" id="fdiscount" ><br>
+  <label>Oferta del producto:</label><br>
+  <input type="text" id="foffer" ><br>
+  <label>Precio del producto:</label><br>
+  <input type="text" id="fprice" ><br>
+  <label>Ruta de imagen:</label><br>
+  <input type="text" id="fimage"><br>
+  <input type="submit" value="Submit" onclick="createProduct()"><br>
+  <sell-item title="Mi producto 1" rating="3" discount="0" offer="200" price="200" image="img/1.jpg" visible></sell-item><br>
+
+
+</body>
+
+  <script>
+    
+    const form = ["ftitle", "frating", "fdiscount", "foffer", "fprice", "fimage"]
+
+    const createProduct = function () {
+      
+      // verify
+      var approved = true
+      form.forEach(item => {
+        if (document.getElementById(item).value == ""){
+          approved = false
+        }
+      })
+      if (!approved){
+        alert("missing fields :(")
+        return
+      }
+      
+      // get
+      let newTitle = document.getElementById("ftitle").value  
+      let newRating = document.getElementById("frating").value
+      let newDiscount = document.getElementById("fdiscount").value
+      let newOffer = document.getElementById("foffer").value
+      let newPrice = document.getElementById("fprice").value
+      let newImage = document.getElementById("fimage").value
+
+      // clear
+      form.forEach(item => {
+        document.getElementById(item).value = ""
+      })
+      
+      // create
+      var newProduct = document.createElement('sell-item')
+
+      // define
+      newProduct.setAttribute("title", newTitle)
+      newProduct.setAttribute("rating", newRating)
+      newProduct.setAttribute("discount", newDiscount)
+      newProduct.setAttribute("offer", newOffer)
+      newProduct.setAttribute("price", newPrice)
+      newProduct.setAttribute("image", newImage)
+
+      //append
+      document.body.appendChild(newProduct);
+    }
+    
+  </script>
+</body>
+
+</html>
