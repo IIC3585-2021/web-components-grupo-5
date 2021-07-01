@@ -30,29 +30,30 @@
   <body>
     <main class="main-container">
       <todo-view></todo-view>
-      
     </main>
-    <div class="cardform">
-      <label>Titulo del producto:</label><br>
-      <input type="text" id="ftitle" ><br>
-      <label>Rating del producto:</label><br>
-      <input type="text" id="frating" ><br>
-      <label>Descuento del producto:</label><br>
-      <input type="text" id="fdiscount" ><br>
-      <label>Oferta del producto:</label><br>
-      <input type="text" id="foffer" ><br>
-      <label>Precio del producto:</label><br>
-      <input type="text" id="fprice" ><br>
-      <label>Ruta de imagen:</label><br>
-      <input type="text" id="fimage"><br>
-      <input type="submit" value="Submit" onclick="createProduct()"><br>
+    <hr>
+    <div class="container">
+      <div class="cardform">
+        <label>Titulo del producto:</label><br>
+        <input type="text" id="ftitle" ><br>
+        <label>Rating del producto:</label><br>
+        <input type="text" id="frating" ><br>
+        <label>Descuento del producto:</label><br>
+        <input type="text" id="fdiscount" ><br>
+        <label>Oferta del producto:</label><br>
+        <input type="text" id="foffer" ><br>
+        <label>Precio del producto:</label><br>
+        <input type="text" id="fprice" ><br>
+        <label>Ruta de imagen:</label><br>
+        <input type="text" id="fimage"><br>
+        <input type="submit" value="Submit" onclick="createProduct()"><br>
+      </div>
+      <div class="cards-container" id="cards-container">
+        <item-view title="Manzana" rating="5" discount="0" offer="200" price="200" image="img/manzana.png" visible />
+        <item-view title="Leche" rating="4" discount="20" offer="960" price="1200" image="img/leche.png" visible />
+        <item-view title="Perfume" rating="3" discount="50" offer="11.000" price="22.000" image="img/colonia.png" visible />
+      </div>
     </div>
-    <div class="cards-container" id="cards-container">
-      <item-view title="Manzana" rating="5" discount="0" offer="200" price="200" image="img/manzana.png" visible></tem-view>
-      <tem-view title="Leche" rating="4" discount="20" offer="960" price="1200" image="img/leche.png" visible></tem-view>
-      <tem-view title="Perfume" rating="3" discount="50" offer="11.000" price="22.000" image="img/colonia.png" visible></tem-view>
-    </div>
-    
     <script src="./vendor/webcomponents-loader.js"></script>
     <script>
 
@@ -104,6 +105,19 @@ const createProduct = function () {
 
   </body>
   <style>
+    .container {
+      display: flex;
+      flex-direction: row;
+    }
+    .cardform {
+      padding: 40px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: antiquewhite;
+      margin: 20px auto;
+      width: 25%;
+      height: 500px;
+    }
     .main-container {
       padding: 10px 40px;
       display: flex;
@@ -119,13 +133,12 @@ const createProduct = function () {
       padding: 10px 40px;
       display: flex;
       flex-direction: column;
-      background-color: pink;
+      background-color: azure;
       margin: 20px auto;
       justify-content: space-evenly;
       overflow: scroll;
       width: 25%;
-      height: auto;
-      margin-top: 10px;
+      height: 560px;
     }
   </style>
 </html>
