@@ -27,11 +27,22 @@
   </head>
 
   <body>
-    <header><h1>Todo App Lit</h1></header>
-
-    <main>
+    <main class="main-container">
       <todo-view></todo-view>
     </main>
     <script src="./vendor/webcomponents-loader.js"></script>
   </body>
+  <style>
+    .main-container {
+      padding: 10px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: azure;
+      margin: 20px auto;
+      justify-content: space-evenly;
+      overflow: scroll;
+      width: 25%;
+      height: auto;
+    }
+  </style>
 </html>
