@@ -1,4 +1,4 @@
-# LitElement tutorial starter
+# LitElement TODO list and item list
 - clone repository
 - ```cd lit-app```
 - ```npm install```
