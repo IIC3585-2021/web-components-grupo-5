@@ -23,14 +23,85 @@
       }
     </script>
     <script src="./vendor/custom-elements-es5-adapter.js"></script>
+
     <!-- ! DO NOT REMOVE THIS COMMENT, WE NEED ITS CLOSING MARKER -->
   </head>
 
   <body>
     <main class="main-container">
       <todo-view></todo-view>
+      
     </main>
+    <div class="cardform">
+      <label>Titulo del producto:</label><br>
+      <input type="text" id="ftitle" ><br>
+      <label>Rating del producto:</label><br>
+      <input type="text" id="frating" ><br>
+      <label>Descuento del producto:</label><br>
+      <input type="text" id="fdiscount" ><br>
+      <label>Oferta del producto:</label><br>
+      <input type="text" id="foffer" ><br>
+      <label>Precio del producto:</label><br>
+      <input type="text" id="fprice" ><br>
+      <label>Ruta de imagen:</label><br>
+      <input type="text" id="fimage"><br>
+      <input type="submit" value="Submit" onclick="createProduct()"><br>
+    </div>
+    <div class="cards-container" id="cards-container">
+      <item-view title="Manzana" rating="5" discount="0" offer="200" price="200" image="img/manzana.png" visible></tem-view>
+      <tem-view title="Leche" rating="4" discount="20" offer="960" price="1200" image="img/leche.png" visible></tem-view>
+      <tem-view title="Perfume" rating="3" discount="50" offer="11.000" price="22.000" image="img/colonia.png" visible></tem-view>
+    </div>
+    
     <script src="./vendor/webcomponents-loader.js"></script>
+    <script>
+
+const form = ["ftitle", "frating", "fdiscount", "foffer", "fprice", "fimage"]
+
+const createProduct = function () {
+      
+      // verify
+      var approved = true
+      form.forEach(item => {
+        if (document.getElementById(item).value == ""){
+          approved = false
+        }
+      })
+      if (!approved){
+        alert("missing fields :( complete them and then submit")
+        return
+      }
+      
+      // get
+      let newTitle = document.getElementById("ftitle").value  
+      let newRating = document.getElementById("frating").value
+      let newDiscount = document.getElementById("fdiscount").value
+      let newOffer = document.getElementById("foffer").value
+      let newPrice = document.getElementById("fprice").value
+      let newImage = document.getElementById("fimage").value
+
+      // clear
+      form.forEach(item => {
+        document.getElementById(item).value = ""
+      })
+      
+      // create
+      var newProduct = document.createElement('item-view')
+
+      // define
+      newProduct.setAttribute("title", newTitle)
+      newProduct.setAttribute("rating", newRating)
+      newProduct.setAttribute("discount", newDiscount)
+      newProduct.setAttribute("offer", newOffer)
+      newProduct.setAttribute("price", newPrice)
+      newProduct.setAttribute("image", newImage)
+
+      // append
+      var cardsContainer = document.getElementById('cards-container')
+      cardsContainer.appendChild(newProduct);
+    }
+    </script>
+
   </body>
   <style>
     .main-container {
@@ -43,6 +114,18 @@
       overflow: scroll;
       width: 25%;
       height: auto;
+    }
+    .cards-container {
+      padding: 10px 40px;
+      display: flex;
+      flex-direction: column;
+      background-color: pink;
+      margin: 20px auto;
+      justify-content: space-evenly;
+      overflow: scroll;
+      width: 25%;
+      height: auto;
+      margin-top: 10px;
     }
   </style>
 </html>
